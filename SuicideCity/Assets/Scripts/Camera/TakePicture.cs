@@ -7,8 +7,9 @@ using DG.Tweening;
 public class TakePicture : MonoBehaviour {
 
     [Header("Interest Area Project Vars")]
-    [Tooltip("Half extent of box")]
+    [Tooltip("Extent of box")]
     public Vector3 extentRange;
+    private Vector3 halfExtentRange;
     [Tooltip("Box position")]
     public Vector3 boxPos;
     [Tooltip("Focus change")]
@@ -54,11 +55,22 @@ public class TakePicture : MonoBehaviour {
     // Use this for initialization
     void Start() {
         mainCamera = Camera.main;
+        halfExtentRange = extentRange / 2;
+
+        //GetFrustumPlanes();
+        //CreateFrustumPlanes();
     }
 
     // Update is called once per frame
     void Update() {
         CameraZoom();
+
+        //debug
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            RunCameraFuncs();
+            PrintObjectsInList();
+        }
     }
 
     //handle camera zoom before processing any actions per frame
@@ -101,7 +113,7 @@ public class TakePicture : MonoBehaviour {
     }
 
     //Get the frustum planes upon input <- only when called for
-    private void GetFrustrumPlanes()
+    private void GetFrustumPlanes()
     {
         viewPortPlanes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
     }
@@ -110,9 +122,9 @@ public class TakePicture : MonoBehaviour {
     private void ProjectInterestArea()
     {
         //get location to place box ahead of camera, half the z ahead of forward
-        Vector3 boxCenterLocation = mainCamera.transform.position + (mainCamera.transform.forward * boxPos.z);
+        Vector3 boxCenterLocation = transform.position + (transform.forward * boxPos.z / focusChange);
         //place the box down and get all in box
-        objectsInArea = Physics.OverlapBox(boxCenterLocation, extentRange, transform.rotation);
+        objectsInArea = Physics.OverlapBox(boxCenterLocation, halfExtentRange, transform.rotation);
     }
 
     //find all objects of interest currently in the area in view of camera
@@ -131,10 +143,10 @@ public class TakePicture : MonoBehaviour {
     }
 
     //check if the objects of interest found are also within the camera's view port
-    private void CheckInterestObjectInViewPort()
+    private void CheckInterestObjectwithinViewPort()
     {
-        //Get frustrum planes from camera
-        GetFrustrumPlanes();
+        //Get frustum planes from camera
+        GetFrustumPlanes();
         //for all objects in list
         for (int i = 0; i < objectsInterestList.Count; i++)
         {
@@ -148,18 +160,19 @@ public class TakePicture : MonoBehaviour {
     }
 
     //check if the objects of interest in area are in view of the camera
-    private void CheckInterstObjectInView()
+    private void CheckInterestObjectInViewPerspective()
     {
         //for all objects in list
         for (int i = 0; i < objectsInterestList.Count; i++)
         {
             //get the direction from self to object
-            Vector3 directionToTarget = objectsInterestList[i].transform.position - mainCamera.transform.position;
+            Vector3 directionToTarget = (objectsInterestList[i].transform.position - mainCamera.transform.position).normalized;
             //cast a ray, if it hits, check if the other object is the object you are looking for
             //otherwise, there was something obstructing the view
             RaycastHit hitInfo;
             if (Physics.Raycast(mainCamera.transform.position, directionToTarget, out hitInfo, Mathf.Infinity))
             {
+                print("Ray hit " + hitInfo.transform.gameObject);
                 //if ray hit something, check what it hit
                 //if the thing that was hit was not the object in question, object not in view
                 //if so, discard that object from the list
@@ -170,7 +183,46 @@ public class TakePicture : MonoBehaviour {
             }
         }
     }
+
+    //run camera functions in sequence
+    private void RunCameraFuncs()
+    {
+        ProjectInterestArea();
+        FilterObjectsOfInterest();
+        CheckInterestObjectwithinViewPort();
+        CheckInterestObjectInViewPerspective();
+        //ScreenCapture.CaptureScreenshot()
+    }
     
+    //debug funcs
+    private void CreateFrustumPlanes()
+    {
+        for (int i = 0; i < viewPortPlanes.Length; i++)
+        {
+            GameObject p = GameObject.CreatePrimitive(PrimitiveType.Plane);
+            p.name = "Plane " + i.ToString();
+            p.transform.position = -viewPortPlanes[i].normal * viewPortPlanes[i].distance;
+            p.transform.rotation = Quaternion.FromToRotation(Vector3.up, viewPortPlanes[i].normal);
+        }
+    }
+
+    //prints out all objects in the list <- after all functions for checking if something is in camera view
+    private void PrintObjectsInList()
+    {
+        //for all objects captured in original array
+        for (int i = 0; i < objectsInArea.Length; i++)
+        {
+            print(objectsInArea[i] + " in interest area");
+        }
+
+        //for all objects in list
+        for (int i = 0; i < objectsInterestList.Count; i++)
+        {
+            //print out the object with name
+            print(objectsInterestList[i] + " in interest list");
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
