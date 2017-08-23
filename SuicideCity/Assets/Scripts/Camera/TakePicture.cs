@@ -58,6 +58,10 @@ public class TakePicture : MonoBehaviour {
     //List of gameobjects that are of interest
     private List<GameObject> objectsInterestList = new List<GameObject>();
 
+    [Header("Photobook")]
+    [Tooltip("Photobook object held by player")]
+    public PhotobookBehaviour photobook;
+
     // Use this for initialization
     void Start() {
         mainCamera = Camera.main;
@@ -224,15 +228,22 @@ public class TakePicture : MonoBehaviour {
         RenderTexture.active = newRenderTexture;
         //read pixels into texture
         newTexture.ReadPixels(new Rect(0, 0, resolutionWidth, resolutionHeight), 0, 0);
+        newTexture.Apply();
         //deactivate jobs
         mainCamera.targetTexture = null;
         RenderTexture.active = null;
         //destroy the render texture object
         Destroy(newRenderTexture);
-        //write the texture to a file
-        byte[] bytes = newTexture.EncodeToPNG();
-        string filename = ScreenShotName();
-        System.IO.File.WriteAllBytes(filename, bytes);
+
+        //convert the new texture into a sprite
+        Sprite newSprite = Sprite.Create(newTexture, new Rect(0.0f, 0.0f, newTexture.width, newTexture.height), new Vector2(0.5f, 0.5f));
+        //add the sprite to the photobook
+        photobook.AddPhotoToBook(newSprite);
+
+        ////write the texture to a file
+        //byte[] bytes = newTexture.EncodeToPNG();
+        //string filename = ScreenShotName();
+        //System.IO.File.WriteAllBytes(filename, bytes);
     }
     
     //debug funcs
