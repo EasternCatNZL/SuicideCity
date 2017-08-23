@@ -39,6 +39,12 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("Tag for objects of interest")]
     public string interestObjectTag = "Interest";
 
+    [Header("Resolution")]
+    [Tooltip("Resolution Width")]
+    public int resolutionWidth = 1980;
+    [Tooltip("Resolution Height")]
+    public int resolutionHeight = 1020;
+
     //camera ref
     private Camera mainCamera;
     //camera pos
@@ -70,6 +76,10 @@ public class TakePicture : MonoBehaviour {
         {
             RunCameraFuncs();
             PrintObjectsInList();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            CurrentScreenToPicture();
         }
     }
 
@@ -192,6 +202,37 @@ public class TakePicture : MonoBehaviour {
         CheckInterestObjectwithinViewPort();
         CheckInterestObjectInViewPerspective();
         //ScreenCapture.CaptureScreenshot()
+    }
+
+    //creates the screenshots name
+    public string ScreenShotName()
+    {
+        return string.Format("{0}/Screenshot/{1}.png", Application.dataPath, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+    }
+
+    //create the screenshot as 2d texture
+    public void CurrentScreenToPicture()
+    {
+        //make a render texture to hold the new image
+        RenderTexture newRenderTexture = new RenderTexture(resolutionWidth, resolutionHeight, 24);
+        mainCamera.targetTexture = newRenderTexture;
+        //make the new texture
+        Texture2D newTexture = new Texture2D(resolutionWidth, resolutionHeight, TextureFormat.RGB24, false);
+        //have camera render
+        mainCamera.Render();
+        //sets the active render texture
+        RenderTexture.active = newRenderTexture;
+        //read pixels into texture
+        newTexture.ReadPixels(new Rect(0, 0, resolutionWidth, resolutionHeight), 0, 0);
+        //deactivate jobs
+        mainCamera.targetTexture = null;
+        RenderTexture.active = null;
+        //destroy the render texture object
+        Destroy(newRenderTexture);
+        //write the texture to a file
+        byte[] bytes = newTexture.EncodeToPNG();
+        string filename = ScreenShotName();
+        System.IO.File.WriteAllBytes(filename, bytes);
     }
     
     //debug funcs
