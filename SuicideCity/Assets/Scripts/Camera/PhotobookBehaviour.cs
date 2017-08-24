@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhotobookBehaviour : MonoBehaviour {
 
     //the photos currently taken, in list format
-    public List<Sprite> photoList = new List<Sprite>();
+    public List<PhotoBehaviour> photoList = new List<PhotoBehaviour>();
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class PhotobookBehaviour : MonoBehaviour {
 		
 	}
 
-    public void AddPhotoToBook(Sprite newPhoto)
+    public void AddPhotoToBook(PhotoBehaviour newPhoto)
     {
         photoList.Add(newPhoto);
     }

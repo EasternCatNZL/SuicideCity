@@ -45,6 +45,10 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("Resolution Height")]
     public int resolutionHeight = 1020;
 
+    [Header("Photo Object")]
+    [Tooltip("The photo object to base photos off")]
+    public GameObject photoObject;
+
     //camera ref
     private Camera mainCamera;
     //camera pos
@@ -79,12 +83,12 @@ public class TakePicture : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             RunCameraFuncs();
-            PrintObjectsInList();
+            //PrintObjectsInList();
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            CurrentScreenToPicture();
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    CurrentScreenToPicture();
+        //}
     }
 
     //handle camera zoom before processing any actions per frame
@@ -186,7 +190,6 @@ public class TakePicture : MonoBehaviour {
             RaycastHit hitInfo;
             if (Physics.Raycast(mainCamera.transform.position, directionToTarget, out hitInfo, Mathf.Infinity))
             {
-                print("Ray hit " + hitInfo.transform.gameObject);
                 //if ray hit something, check what it hit
                 //if the thing that was hit was not the object in question, object not in view
                 //if so, discard that object from the list
@@ -206,16 +209,17 @@ public class TakePicture : MonoBehaviour {
         CheckInterestObjectwithinViewPort();
         CheckInterestObjectInViewPerspective();
         //ScreenCapture.CaptureScreenshot()
+        CreatePhoto();
     }
 
     //creates the screenshots name
-    public string ScreenShotName()
+    private string ScreenShotName()
     {
         return string.Format("{0}/Screenshot/{1}.png", Application.dataPath, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
     }
 
     //create the screenshot as 2d texture
-    public void CurrentScreenToPicture()
+    private void CurrentScreenToPicture(PhotoBehaviour _Photo)
     {
         //make a render texture to hold the new image
         RenderTexture newRenderTexture = new RenderTexture(resolutionWidth, resolutionHeight, 24);
@@ -237,13 +241,69 @@ public class TakePicture : MonoBehaviour {
 
         //convert the new texture into a sprite
         Sprite newSprite = Sprite.Create(newTexture, new Rect(0.0f, 0.0f, newTexture.width, newTexture.height), new Vector2(0.5f, 0.5f));
-        //add the sprite to the photobook
-        photobook.AddPhotoToBook(newSprite);
+        //give image to photo behaviour object
+        _Photo.SetPhotoImage(newSprite);
 
         ////write the texture to a file
         //byte[] bytes = newTexture.EncodeToPNG();
         //string filename = ScreenShotName();
         //System.IO.File.WriteAllBytes(filename, bytes);
+    }
+
+    //get all the interest points in the photo and compile into photo details <- called after all filtering has occured
+    private void GetAllInterstPointsInPhoto(PhotoBehaviour _Photo)
+    {
+        //for all objects of interest inside the photo area
+        for (int i = 0; i < objectsInterestList.Count; i++)
+        {
+            //check for interestbehaviour script, if not existing
+            if (!objectsInterestList[i].GetComponent<InterestBehaviour>())
+            {
+                //throw a warning that interest object does not exist
+            }
+            //otherwise pass the interest object on the object to the photo
+            else
+            {
+                _Photo.AddInterestBehaviour(objectsInterestList[i].GetComponent<InterestBehaviour>());
+            }
+        }
+    }
+
+    //get the object closest to center and set as focus of the camera
+    private void FindFocusObject(PhotoBehaviour _Photo)
+    {
+        //set initialize values to compare against
+        InterestBehaviour focusObject = null;
+        float minDistance = 2.0f;
+        //for all the interest objects in list
+        for (int i = 0; i < objectsInterestList.Count; i++)
+        {
+            //get the transform of this object as a rect transform
+            Vector2 rectTransform = mainCamera.WorldToViewportPoint(objectsInterestList[i].transform.position);
+            //compare the distance to middle of viewport
+            float distance = Vector2.Distance(objectsInterestList[i].transform.position, new Vector2(0.5f, 0.5f));
+            //if this object is closer
+            if (distance < minDistance)
+            {
+                //set this object to focus
+                focusObject = objectsInterestList[i].GetComponent<InterestBehaviour>();
+                //set min distance to this distance
+                minDistance = distance;
+            }
+        }
+        //set the focus object of this photo
+        _Photo.SetFocusObject(focusObject);
+    }
+
+    //create the photo object and run it through the neccesary functions
+    private void CreatePhoto()
+    {
+        //create the photo
+        GameObject photoClone = photoObject;
+        //run it through all funcs for photo details
+        CurrentScreenToPicture(photoClone.GetComponent<PhotoBehaviour>());
+        GetAllInterstPointsInPhoto(photoClone.GetComponent<PhotoBehaviour>());
+        FindFocusObject(photoClone.GetComponent<PhotoBehaviour>());
     }
     
     //debug funcs
