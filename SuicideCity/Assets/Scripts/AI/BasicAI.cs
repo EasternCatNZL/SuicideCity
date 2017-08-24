@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BasicAI : MonoBehaviour {
+public class BasicAI : MonoBehaviour
+{
 
     public PathWaypoint Destination;
     public Vector3 PrevDestination = Vector3.zero;
 
-    static float Arrived = 2.0f;
+    public GameObject TargetPointOfInterest = null;
+
+    static float Arrived = 1.0f;
 
     private NavMeshAgent Agent;
     private Vector3 Direction;
@@ -20,27 +23,43 @@ public class BasicAI : MonoBehaviour {
         Agent.SetDestination(Destination.transform.position);
         Agent.angularSpeed = 180;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if(Agent.remainingDistance < Arrived)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Agent.remainingDistance < Arrived && Destination)
         {
-            Vector3 TempPos = Destination.transform.position;
+            if (TargetPointOfInterest)
+            {
+                Vector3 TempPos = Destination.transform.position;
 
-            print("Prev Dest: " + PrevDestination.ToString());
-            Destination = Destination.GetOppositeWaypoint(PrevDestination);
+                Destination = Destination.FindPointOfInterest(TargetPointOfInterest);
+                if (!Destination) Agent.isStopped = true;
+                else
+                {
+                    PrevDestination = TempPos;
 
-            PrevDestination = TempPos;
+                    Agent.SetDestination(Destination.transform.position);
+                }
+            }
+            else
+            {
+                Vector3 TempPos = Destination.transform.position;
 
-            Agent.SetDestination(Destination.transform.position);
+                Destination = Destination.GetOppositeWaypoint(PrevDestination);
+
+                PrevDestination = TempPos;
+
+                Agent.SetDestination(Destination.transform.position);
+            }
         }
 
-
+        //Rotations
         Direction = Agent.nextPosition - transform.position;
 
         Direction.Normalize();
 
-        //Player Rotations
+
         if (Vector3.Dot(transform.right, Direction) < 0.0f || Vector3.Dot(transform.right, Direction) > 0.0f)
         {
             Agent.speed = 0;
