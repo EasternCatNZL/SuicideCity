@@ -18,7 +18,6 @@ public class BasicAI : MonoBehaviour
 
     private void Start()
     {
-
         Agent = GetComponent<NavMeshAgent>();
         Agent.SetDestination(Destination.transform.position);
         Agent.angularSpeed = 180;

@@ -35,6 +35,7 @@ public class PathWaypoint : MonoBehaviour
         }
     }
 
+    //Returns a Waypoint in the direction to a point of interest
     public PathWaypoint FindPointOfInterest(GameObject _POI)
     {
         if (PointOfInterest == _POI) return null;
@@ -46,6 +47,7 @@ public class PathWaypoint : MonoBehaviour
         return null;
     }
 
+    //Propergate the knowledge of a point of interest
     public void SpreadPointsOfInterest(GameObject _POI, string _PointName)
     {
         if (POIs.ContainsKey(_POI))
@@ -66,35 +68,6 @@ public class PathWaypoint : MonoBehaviour
                 Waypoint[i].SpreadPointsOfInterest(_POI, gameObject.name);
             }
         }
-    }
-
-    public GameObject GetPointOfInterest()
-    {
-        return PointOfInterest;
-    }
-
-    public bool MapPointsOfInterest()
-    {
-        if (Mapped) return true;
-        if (Mapping) return false;
-        Mapping = true;
-        for (int i = 0; i < Waypoint.Length; ++i)
-        {
-            print(gameObject.name);
-            if (Waypoint[i].MapPointsOfInterest())
-            {
-                if (Waypoint[i].GetPointOfInterest() != null)
-                {
-                    POIs.Add(Waypoint[i].GetPointOfInterest(), i);
-                }
-            }
-        }
-        print("\n");
-        print(gameObject.name);
-        print(POIs.Keys.ToString());
-        print(POIs.Values.ToString());
-        Mapped = true;
-        return true;
     }
 
     //Return a waypoint that isn't the one you came from
@@ -140,16 +113,17 @@ public class PathWaypoint : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-
         Gizmos.color = Color.magenta;
         Gizmos.DrawSphere(transform.position, 0.2f);
+        Gizmos.color = Color.red;
+        UnityEditor.Handles.color = Color.cyan;
+        UnityEditor.Handles.Label(transform.position + transform.up, gameObject.name);
         for (int i = 0; i < Waypoint.Length; ++i)
         {
             Vector3 dir = Waypoint[i].transform.position - transform.position;
             dir.Normalize();
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position + Vector3.Cross(dir, transform.up) / 2, Waypoint[i].transform.position);
-            UnityEditor.Handles.Label(Waypoint[i].transform.position + transform.up, Waypoint[i].name);
+            
+            Gizmos.DrawLine(transform.position + Vector3.Cross(dir, transform.up) / 2, Waypoint[i].transform.position);                     
         }
     }
 }

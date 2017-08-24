@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
 
     public float Sensitivity = 2.0f;
     public float Smoothing = 2.0f;
+    static private bool Lock = false;
 
     GameObject Player;
 
@@ -19,7 +20,10 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        MouseMovement();
+        if (!Lock)
+        {
+            MouseMovement();
+        }
 	}
 
     void MouseMovement()
@@ -35,5 +39,15 @@ public class CameraController : MonoBehaviour {
 
         transform.localRotation = Quaternion.AngleAxis(-MouseLook.y, Vector3.right);
         Player.transform.localRotation = Quaternion.AngleAxis(MouseLook.x, Player.transform.up);
+    }
+
+    static public void LockCamera()
+    {
+        Lock = true;
+    }
+
+    static public void UnlockCamera()
+    {
+        Lock = false;
     }
 }

@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float MoveSpeed = 5.0f;
     private float Move;
     private float Straffe;
+    static private bool Lock = false;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +16,10 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Movement();
+        if (!Lock)
+        {
+            Movement();
+        }
 	}
 
     void Movement()
@@ -27,5 +31,17 @@ public class PlayerController : MonoBehaviour {
         Straffe *= Time.deltaTime;
 
         transform.Translate(Straffe, 0, Move);       
+    }
+
+    static public void LockPlayer()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Lock = true;
+    }
+
+    static public void UnlockPlayer()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Lock = false;
     }
 }
