@@ -60,7 +60,7 @@ public class TakePicture : MonoBehaviour {
     //Collider array of all captured within interest area
     private Collider[] objectsInArea;
     //List of gameobjects that are of interest
-    private List<GameObject> objectsInterestList = new List<GameObject>();
+    public List<GameObject> objectsInterestList = new List<GameObject>();
 
     [Header("Photobook")]
     [Tooltip("Photobook object held by player")]
@@ -204,11 +204,15 @@ public class TakePicture : MonoBehaviour {
     //run camera functions in sequence
     private void RunCameraFuncs()
     {
+        //clear the list before every picture
+        objectsInterestList.Clear();
+        //run camera funcs
         ProjectInterestArea();
         FilterObjectsOfInterest();
         CheckInterestObjectwithinViewPort();
         CheckInterestObjectInViewPerspective();
         //ScreenCapture.CaptureScreenshot()
+        //create the photo
         CreatePhoto();
     }
 
@@ -256,16 +260,9 @@ public class TakePicture : MonoBehaviour {
         //for all objects of interest inside the photo area
         for (int i = 0; i < objectsInterestList.Count; i++)
         {
-            //check for interestbehaviour script, if not existing
-            if (!objectsInterestList[i].GetComponent<InterestBehaviour>())
-            {
-                //throw a warning that interest object does not exist
-            }
-            //otherwise pass the interest object on the object to the photo
-            else
-            {
-                _Photo.AddInterestBehaviour(objectsInterestList[i].GetComponent<InterestBehaviour>());
-            }
+            
+                _Photo.AddInterestBehaviour(objectsInterestList[i]);
+            
         }
     }
 
@@ -273,7 +270,7 @@ public class TakePicture : MonoBehaviour {
     private void FindFocusObject(PhotoBehaviour _Photo)
     {
         //set initialize values to compare against
-        InterestBehaviour focusObject = null;
+        GameObject focusObject = null;
         float minDistance = 2.0f;
         //for all the interest objects in list
         for (int i = 0; i < objectsInterestList.Count; i++)
@@ -281,12 +278,12 @@ public class TakePicture : MonoBehaviour {
             //get the transform of this object as a rect transform
             Vector2 rectTransform = mainCamera.WorldToViewportPoint(objectsInterestList[i].transform.position);
             //compare the distance to middle of viewport
-            float distance = Vector2.Distance(objectsInterestList[i].transform.position, new Vector2(0.5f, 0.5f));
+            float distance = Vector2.Distance(rectTransform, new Vector2(0.5f, 0.5f));
             //if this object is closer
             if (distance < minDistance)
             {
                 //set this object to focus
-                focusObject = objectsInterestList[i].GetComponent<InterestBehaviour>();
+                focusObject = objectsInterestList[i];
                 //set min distance to this distance
                 minDistance = distance;
             }
@@ -299,11 +296,12 @@ public class TakePicture : MonoBehaviour {
     private void CreatePhoto()
     {
         //create the photo
-        GameObject photoClone = photoObject;
+        GameObject photoClone = Instantiate(photoObject, photobook.transform);
         //run it through all funcs for photo details
         CurrentScreenToPicture(photoClone.GetComponent<PhotoBehaviour>());
         GetAllInterstPointsInPhoto(photoClone.GetComponent<PhotoBehaviour>());
         FindFocusObject(photoClone.GetComponent<PhotoBehaviour>());
+        photobook.AddPhotoToBook(photoClone);
     }
     
     //debug funcs

@@ -270,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 948520300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.63, z: 12.61}
+  m_LocalPosition: {x: 5.3, y: 0.63, z: -2.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1576306353}
@@ -287,8 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8d4821c002f6048a6723dd07ff5ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interestName: 
-  interestDetailsArray: []
+  interestName: The other one
+  interestDetailsArray:
+  - Bruh.
 --- !u!1 &956453832
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +503,7 @@ MonoBehaviour:
   resolutionHeight: 1020
   photoObject: {fileID: 1605482611195398, guid: 1df209e54a20a884e9b3f57255b4fde6,
     type: 2}
+  objectsInterestList: []
   photobook: {fileID: 1993618572}
 --- !u!54 &1440344425
 Rigidbody:
@@ -654,7 +656,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1836283385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.52, y: 0.5, z: 8.52}
+  m_LocalPosition: {x: -2.71, y: 0.5, z: -4.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1576306353}
@@ -671,8 +673,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8d4821c002f6048a6723dd07ff5ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interestName: 
-  interestDetailsArray: []
+  interestName: The main cylinder
+  interestDetailsArray:
+  - I'm the main character, kay?
 --- !u!1 &1993618571
 GameObject:
   m_ObjectHideFlags: 0

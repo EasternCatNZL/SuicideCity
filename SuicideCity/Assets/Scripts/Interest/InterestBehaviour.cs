@@ -10,6 +10,18 @@ public class InterestBehaviour : MonoBehaviour {
     [Tooltip("Details of interest")]
     public string[] interestDetailsArray = new string[0];
 
+    //enum of interest type
+    public enum InterestType
+    {
+        Victim,
+        Weapon,
+        Evidence
+    }
+
+    [Header("Interest Type")]
+    [Tooltip("What is this interest point?")]
+    public InterestType interesttype;
+
 	// Use this for initialization
 	void Start () {
         //debug
@@ -20,4 +32,6 @@ public class InterestBehaviour : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
 }

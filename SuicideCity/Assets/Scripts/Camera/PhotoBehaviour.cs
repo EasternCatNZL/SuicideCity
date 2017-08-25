@@ -6,16 +6,16 @@ public class PhotoBehaviour : MonoBehaviour {
 
     [Header("Interest objects list")]
     [Tooltip("List of interest objects captured in the photo")]
-    public List<InterestBehaviour> interestObjectsList = new List<InterestBehaviour>();
+    public List<GameObject> interestObjectsList = new List<GameObject>();
     //the main focus point of the photo
-    public InterestBehaviour mainFocusInterestObject;
+    public GameObject mainFocusInterestObject;
 
     //the image created when taking screenshot
-    private Sprite photo;
+    public Sprite photo;
 
 	// Use this for initialization
 	void Start () {
-		
+        //interestObjectsList.Clear();
 	}
 	
 	// Update is called once per frame
@@ -30,14 +30,14 @@ public class PhotoBehaviour : MonoBehaviour {
     }
 
     //add interest behaviour script details to the photo
-    public void AddInterestBehaviour(InterestBehaviour newInterestBehaviour)
+    public void AddInterestBehaviour(GameObject newInterestObject)
     {
-        interestObjectsList.Add(newInterestBehaviour);
+        interestObjectsList.Add(newInterestObject);
     }
 
     //set the focus of this photo
-    public void SetFocusObject(InterestBehaviour focusBehaviour)
+    public void SetFocusObject(GameObject focusObject)
     {
-        mainFocusInterestObject = focusBehaviour;
+        mainFocusInterestObject = focusObject;
     }
 }
