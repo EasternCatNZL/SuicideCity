@@ -20,7 +20,7 @@ public class InterestBehaviour : MonoBehaviour {
 
     [Header("Interest Type")]
     [Tooltip("What is this interest point?")]
-    public InterestType interesttype;
+    public InterestType interestType;
 
 	// Use this for initialization
 	void Start () {
