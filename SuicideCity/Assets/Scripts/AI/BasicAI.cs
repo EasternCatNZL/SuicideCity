@@ -11,7 +11,7 @@ public class BasicAI : MonoBehaviour
 
     public GameObject TargetPointOfInterest = null;
 
-    static float Arrived = 1.0f;
+    static float Arrived = 2.0f;
 
     private NavMeshAgent Agent;
     private Vector3 Direction;
@@ -20,7 +20,7 @@ public class BasicAI : MonoBehaviour
     {
         Agent = GetComponent<NavMeshAgent>();
         Agent.SetDestination(Destination.transform.position);
-        Agent.angularSpeed = 180;
+        Agent.angularSpeed = 90;
     }
 
     // Update is called once per frame
