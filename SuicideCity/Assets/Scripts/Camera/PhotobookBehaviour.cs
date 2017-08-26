@@ -108,7 +108,7 @@ public class PhotobookBehaviour : MonoBehaviour {
     }
 
     //Change to next image
-    private void ChangePhotoNext()
+    public void ChangePhotoNext()
     {
         //check if theres a next from current photo
         if (currentPhoto < photoImageList.Count)
@@ -117,6 +117,25 @@ public class PhotobookBehaviour : MonoBehaviour {
             photoImageList[currentPhoto].rectTransform.DOAnchorPos(leftImage.rectTransform.anchoredPosition, transitionTime, false);
             //scale the image to the same as left image
             photoImageList[currentPhoto].rectTransform.DOScale(leftImage.rectTransform.localScale, transitionTime);
+            //move the image on the right to current photo location
+            photoImageList[currentPhoto + 1].rectTransform.DOAnchorPos(selectedImage.rectTransform.anchoredPosition, transitionTime, false);
+            photoImageList[currentPhoto + 1].rectTransform.DOScale(selectedImage.rectTransform.localScale, transitionTime);
+        }
+    }
+
+    //change to previous image
+    public void ChangePhotoPrev()
+    {
+        //check if there is a prev photo
+        if (currentPhoto > 0)
+        {
+            //move current photo to right image pos
+            photoImageList[currentPhoto].rectTransform.DOAnchorPos(rightImage.rectTransform.anchoredPosition, transitionTime, false);
+            //scale the image to the same as left image
+            photoImageList[currentPhoto].rectTransform.DOScale(rightImage.rectTransform.localScale, transitionTime);
+            //move the image on the left to current photo location
+            photoImageList[currentPhoto - 1].rectTransform.DOAnchorPos(selectedImage.rectTransform.anchoredPosition, transitionTime, false);
+            photoImageList[currentPhoto - 1].rectTransform.DOScale(selectedImage.rectTransform.localScale, transitionTime);
         }
     }
 }
