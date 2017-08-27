@@ -13,7 +13,7 @@ public class PhotobookBehaviour : MonoBehaviour {
     [Tooltip("Ref to gui component of photobook menu")]
     public GameObject photobookMenuObject;
     [Tooltip("The main image being shown, the big one")]
-    public Image mainImage;
+    public Image displayImage;
     [Tooltip("The currently selected image")]
     public Image selectedImage;
     [Tooltip("The left side image")]
@@ -47,7 +47,28 @@ public class PhotobookBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (isPhotobookOpen)
+            {
+                ClosePhotobook();
+            }
+            else
+            {
+                OpenPhotobook();
+            }
+        }
+        if (isPhotobookOpen)
+        {
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                ChangePhotoPrev();
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                ChangePhotoNext();
+            }
+        }
 	}
 
     public void AddPhotoToBook(GameObject newPhoto)
@@ -61,16 +82,18 @@ public class PhotobookBehaviour : MonoBehaviour {
         //clear old list each time <- make sure its cleared
         photoImageList.Clear();
         //for the first photo, instantiate using currently selected photos transform
-        Image firstPhoto = Instantiate(selectedImage, selectedImage.transform.position, selectedImage.transform.rotation);
+        Image firstPhoto = Instantiate(selectedImage, selectedImage.rectTransform.anchoredPosition, selectedImage.transform.rotation);
         //set the image of the first photo
         firstPhoto.sprite = photoList[0].GetComponent<PhotoBehaviour>().photo;
+        firstPhoto.transform.SetParent(photobookMenuObject.transform, false);
         //add the first photo to the list
         photoImageList.Add(firstPhoto);
         //for all other photos, instantiate using right photos transform
         //start at one, ignore first, if no others, ignore rest
-        for (int i = 1; i < photoImageList.Count; i++)
+        for (int i = 1; i < photoList.Count; i++)
         {
-            Image newPhoto = Instantiate(rightImage, rightImage.transform.position, rightImage.transform.rotation);
+            Image newPhoto = Instantiate(rightImage, rightImage.rectTransform.anchoredPosition, rightImage.transform.rotation);
+            newPhoto.transform.SetParent(photobookMenuObject.transform, false);
             //set the image of the photo
             newPhoto.sprite = photoList[i].GetComponent<PhotoBehaviour>().photo;
             //add to the list
@@ -94,7 +117,7 @@ public class PhotobookBehaviour : MonoBehaviour {
         if (photoList.Count == 0)
         {
             //set the shown image to the no photos image
-            mainImage.sprite = noPhotosImage;
+            displayImage.sprite = noPhotosImage;
 
         }
         //else there are photos
@@ -103,8 +126,26 @@ public class PhotobookBehaviour : MonoBehaviour {
             //populate the list with new photos
             PopulatePhotoList();
             //for first photo <- must be there to reach this point
-            mainImage.sprite = photoList[currentPhoto].GetComponent<PhotoBehaviour>().photo;
+            displayImage.sprite = photoList[currentPhoto].GetComponent<PhotoBehaviour>().photo;
         }
+    }
+
+    //unlock the player and close the photobook menu
+    private void ClosePhotobook()
+    {
+        //set photobook open to false
+        isPhotobookOpen = false;
+        //unlock the player
+        PlayerController.UnlockPlayer();
+        //destroy all the items in the created photolist
+        for (int i = 0; i < photoImageList.Count; i++)
+        {
+            Destroy(photoImageList[i]);
+        }
+        //clear the photo image list
+        photoImageList.Clear();
+        //deactivate the menu
+        photobookMenuObject.SetActive(false);
     }
 
     //Change to next image
@@ -120,6 +161,10 @@ public class PhotobookBehaviour : MonoBehaviour {
             //move the image on the right to current photo location
             photoImageList[currentPhoto + 1].rectTransform.DOAnchorPos(selectedImage.rectTransform.anchoredPosition, transitionTime, false);
             photoImageList[currentPhoto + 1].rectTransform.DOScale(selectedImage.rectTransform.localScale, transitionTime);
+            //increment current
+            currentPhoto++;
+            //change display image to current
+            displayImage.sprite = photoImageList[currentPhoto].sprite;
         }
     }
 
@@ -136,6 +181,10 @@ public class PhotobookBehaviour : MonoBehaviour {
             //move the image on the left to current photo location
             photoImageList[currentPhoto - 1].rectTransform.DOAnchorPos(selectedImage.rectTransform.anchoredPosition, transitionTime, false);
             photoImageList[currentPhoto - 1].rectTransform.DOScale(selectedImage.rectTransform.localScale, transitionTime);
+            //decrement current
+            currentPhoto--;
+            //change display image to current
+            displayImage.sprite = photoImageList[currentPhoto].sprite;
         }
     }
 }
