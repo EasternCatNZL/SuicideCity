@@ -70,6 +70,8 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("Description manager script ref")]
     public DescriptionManager descriptionManager;
 
+    public KeyCode photoCaptureKeyCode;
+
     // Use this for initialization
     void Start() {
         mainCamera = Camera.main;
@@ -87,12 +89,7 @@ public class TakePicture : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             RunCameraFuncs();
-            //PrintObjectsInList();
         }
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    CurrentScreenToPicture();
-        //}
     }
 
     //handle camera zoom before processing any actions per frame

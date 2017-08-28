@@ -42,5 +42,19 @@ public class InterestBehaviour : MonoBehaviour {
 		
 	}
 
+    //progress change functionality
+    public void ChangeToBeforeAct()
+    {
+        progress = ActProgress.BeforeAct;
+    }
 
+    public void ChangeToInAct()
+    {
+        progress = ActProgress.InAct;
+    }
+
+    public void ChangeToAfterAct()
+    {
+        progress = ActProgress.AfterAct;
+    }
 }
