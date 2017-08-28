@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageA: {fileID: 1448713101}
   imageB: {fileID: 1705854214}
+  filename: Nothing.txt
 --- !u!114 &678400853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,9 +502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interestName: The other one
-  interestDetailsArray:
-  - Bruh.
   interestType: 0
+  progress: 0
 --- !u!1 &1340244680
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,9 +848,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interestName: The main cylinder
-  interestDetailsArray:
-  - I'm the main character, kay?
   interestType: 0
+  progress: 0
 --- !u!1 &2129156236
 GameObject:
   m_ObjectHideFlags: 0

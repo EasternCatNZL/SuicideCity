@@ -12,6 +12,8 @@ public class PhotoBehaviour : MonoBehaviour {
 
     //the image created when taking screenshot
     public Sprite photo;
+    //the description attached to the photo
+    public string description;
 
 	// Use this for initialization
 	void Start () {

@@ -2,7 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActOneLogic : MonoBehaviour {
+public class ActManager : MonoBehaviour {
+
+    public enum Act
+    {
+        ThePark
+    }
+
+    [Header("Act")]
+    [Tooltip("Which act is this scene?")]
+    public Act thisAct;
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +22,6 @@ public class ActOneLogic : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    //
 }

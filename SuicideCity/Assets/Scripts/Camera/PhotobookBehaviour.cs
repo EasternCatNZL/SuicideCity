@@ -20,6 +20,8 @@ public class PhotobookBehaviour : MonoBehaviour {
     public Image leftImage;
     [Tooltip("The right side image")]
     public Image rightImage;
+    [Tooltip("The text")]
+    public Text text;
     [Tooltip("The left button")]
     public Button leftButton;
     [Tooltip("The right button")]
@@ -112,6 +114,8 @@ public class PhotobookBehaviour : MonoBehaviour {
         photobookMenuObject.SetActive(true);
         //always look at the first photo first
         currentPhoto = 0;
+        //clear out any text that may exist from previous uses
+        text.text = "";
         //check if photobook has any photos
         //if there are no photos
         if (photoList.Count == 0)
@@ -127,7 +131,12 @@ public class PhotobookBehaviour : MonoBehaviour {
             PopulatePhotoList();
             //for first photo <- must be there to reach this point
             displayImage.sprite = photoList[currentPhoto].GetComponent<PhotoBehaviour>().photo;
+            //display text
+            ChangeTextDescription();
         }
+        print("Photolist count = " + photoList.Count);
+        print("PhotoImagelist count = " + photoImageList.Count);
+        print("Current index = " + currentPhoto);
     }
 
     //unlock the player and close the photobook menu
@@ -152,7 +161,7 @@ public class PhotobookBehaviour : MonoBehaviour {
     public void ChangePhotoNext()
     {
         //check if theres a next from current photo
-        if (currentPhoto < photoImageList.Count)
+        if (currentPhoto < photoImageList.Count - 1)
         {
             //move the current photo to left image pos
             photoImageList[currentPhoto].rectTransform.DOAnchorPos(leftImage.rectTransform.anchoredPosition, transitionTime, false);
@@ -165,6 +174,11 @@ public class PhotobookBehaviour : MonoBehaviour {
             currentPhoto++;
             //change display image to current
             displayImage.sprite = photoImageList[currentPhoto].sprite;
+            //print("Current index = " + currentPhoto);
+            //rearrange order
+            RearrangeGUIComponents();
+            //display text
+            ChangeTextDescription();
         }
     }
 
@@ -185,6 +199,37 @@ public class PhotobookBehaviour : MonoBehaviour {
             currentPhoto--;
             //change display image to current
             displayImage.sprite = photoImageList[currentPhoto].sprite;
+            //rearrange order
+            RearrangeGUIComponents();
+            //print("Current index = " + currentPhoto);
+            //display text
+            ChangeTextDescription();
         }
+    }
+
+    //change the text description
+    public void ChangeTextDescription()
+    {
+        //change the text to what the current photo is
+        text.text = photoList[currentPhoto].GetComponent<PhotoBehaviour>().description;
+    }
+
+    //move gui components around such that certain parts are always displayed at the front
+    private void RearrangeGUIComponents()
+    {
+        //if left and right images exists, make sure the next on either side is on top of pile
+        //if there is something on the left
+        if (currentPhoto > 0)
+        {
+            photoImageList[currentPhoto - 1].transform.SetAsLastSibling();
+        }
+        //if there is something on the right
+        if (currentPhoto < photoImageList.Count - 1)
+        {
+            photoImageList[currentPhoto + 1].transform.SetAsLastSibling();
+        }
+        //move the buttons such that they are always on top
+        rightButton.transform.SetAsLastSibling();
+        leftButton.transform.SetAsLastSibling();
     }
 }

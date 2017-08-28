@@ -66,6 +66,10 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("Photobook object held by player")]
     public PhotobookBehaviour photobook;
 
+    [Header("Description Manager")]
+    [Tooltip("Description manager script ref")]
+    public DescriptionManager descriptionManager;
+
     // Use this for initialization
     void Start() {
         mainCamera = Camera.main;
@@ -292,6 +296,12 @@ public class TakePicture : MonoBehaviour {
         _Photo.SetFocusObject(focusObject);
     }
 
+    //Set up the photo's description
+    private void SetDescriptionOnPhoto(PhotoBehaviour _Photo)
+    {
+        _Photo.description = descriptionManager.GetDescription (_Photo.mainFocusInterestObject.GetComponent<InterestBehaviour>());
+    }
+
     //create the photo object and run it through the neccesary functions
     private void CreatePhoto()
     {
@@ -301,6 +311,11 @@ public class TakePicture : MonoBehaviour {
         CurrentScreenToPicture(photoClone.GetComponent<PhotoBehaviour>());
         GetAllInterstPointsInPhoto(photoClone.GetComponent<PhotoBehaviour>());
         FindFocusObject(photoClone.GetComponent<PhotoBehaviour>());
+        //check to see if photo has a focus object
+        if (photoClone.GetComponent<PhotoBehaviour>().mainFocusInterestObject)
+        {
+            SetDescriptionOnPhoto(photoClone.GetComponent<PhotoBehaviour>());
+        }
         photobook.AddPhotoToBook(photoClone);
     }
     
