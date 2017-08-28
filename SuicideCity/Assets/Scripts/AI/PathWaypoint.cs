@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PathWaypoint : MonoBehaviour
 {
-
+    [Tooltip("The radius of the area a position can be given")]
+    public float Radius = 1f;
     public PathWaypoint[] Waypoint;
     public GameObject PointOfInterest = null;
     private Dictionary<GameObject, int> POIs = new Dictionary<GameObject, int>();
     public bool Mapped = false;
     private bool Mapping = false;
     public bool DebugBoolean;
-    public List<int> temp;
+    private List<int> temp;
     // Use this for initialization
     void Start()
     {
@@ -81,11 +82,8 @@ public class PathWaypoint : MonoBehaviour
         {
             if (Waypoint[i].transform.position != _From)
             {
-                print("Weight: " + weight + " - Chance: " + chance);
                 if (weight < chance)
                 {
-                    print("From " + gameObject.name);
-                    print("To " + Waypoint[i].name);
                     return Waypoint[i];
                 }
                 else
@@ -111,6 +109,21 @@ public class PathWaypoint : MonoBehaviour
         return Waypoint[Random.Range(0, Waypoint.Length)];
     }
 
+    public Vector3 GetRandomPoint()
+    {
+        float RandX = Random.Range(-Radius, Radius);
+        float RandZ = Random.Range(-Radius, Radius);
+
+        Vector3 RandVector = new Vector3(transform.position.x + RandX, transform.position.y, transform.position.z + RandZ);
+
+        return RandVector;
+    }
+
+    public Vector3 GetRandomPoint(Vector3 Offset)
+    {
+        return Vector3.zero;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
@@ -118,6 +131,7 @@ public class PathWaypoint : MonoBehaviour
         Gizmos.color = Color.red;
         UnityEditor.Handles.color = Color.cyan;
         UnityEditor.Handles.Label(transform.position + transform.up, gameObject.name);
+        UnityEditor.Handles.DrawWireDisc(transform.position, transform.up, Radius);
         for (int i = 0; i < Waypoint.Length; ++i)
         {
             Vector3 dir = Waypoint[i].transform.position - transform.position;
