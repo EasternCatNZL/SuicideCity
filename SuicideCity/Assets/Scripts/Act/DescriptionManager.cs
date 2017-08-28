@@ -69,6 +69,13 @@ public class DescriptionManager : MonoBehaviour {
         return description;
     }
 
+    //get no interest description
+    public string GetNoInterestDescription()
+    {
+        string description = ReadFromExternalFile(filenameNothing);
+        return description;
+    }
+
     //read from file
     private string ReadFromExternalFile(string filename)
     {

@@ -134,9 +134,6 @@ public class PhotobookBehaviour : MonoBehaviour {
             //display text
             ChangeTextDescription();
         }
-        print("Photolist count = " + photoList.Count);
-        print("PhotoImagelist count = " + photoImageList.Count);
-        print("Current index = " + currentPhoto);
     }
 
     //unlock the player and close the photobook menu
