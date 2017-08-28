@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour {
     public float MoveSpeed = 5.0f;
     private float Move;
     private float Straffe;
+    private Animator Anim;
     static private bool Lock = false;
+    
 
 	// Use this for initialization
 	void Start () {
+        Anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 	
@@ -24,13 +27,21 @@ public class PlayerController : MonoBehaviour {
 
     void Movement()
     {
-        Move = Input.GetAxis("Vertical") * MoveSpeed;
-        Straffe = Input.GetAxis("Horizontal") * MoveSpeed;
+        if (Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f)
+        {
+            Anim.SetBool("Walking", true);
+            Move = Input.GetAxis("Vertical") * MoveSpeed;
+            Straffe = Input.GetAxis("Horizontal") * MoveSpeed;
 
-        Move *= Time.deltaTime;
-        Straffe *= Time.deltaTime;
+            Move *= Time.deltaTime;
+            Straffe *= Time.deltaTime;
 
-        transform.Translate(Straffe, 0, Move);       
+            transform.Translate(Straffe, 0, Move);
+        }
+        else
+        {
+            Anim.SetBool("Walking", false);
+        }
     }
 
     static public void LockPlayer()
