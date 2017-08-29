@@ -1373,6 +1373,28 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1614223164}
+--- !u!1 &1767106322 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1708524027281712, guid: 1c3435e94d9024a45bbf9fe0304d3585,
+    type: 2}
+  m_PrefabInternal: {fileID: 140833039}
+--- !u!114 &1767106329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1767106322}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f341092cacaa04c874579412944fab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  fadeDamp: 0.5
+  fadeScene: 
+  alpha: 0
+  fadeColor: {r: 0, g: 0, b: 0, a: 0}
+  isFadeIn: 0
 --- !u!1 &1774584745
 GameObject:
   m_ObjectHideFlags: 0

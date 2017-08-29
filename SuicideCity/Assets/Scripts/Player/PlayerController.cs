@@ -21,11 +21,12 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if (!Lock)
         {
-            Movement();
-        }
-	}
+          Movement();
+        }        
+    }
 
     void Movement()
     {
@@ -38,8 +39,8 @@ public class PlayerController : MonoBehaviour {
             Move *= Time.deltaTime;
             Straffe *= Time.deltaTime;
 
-            //transform.Translate(Straffe, 0, Move);
-            Rigid.MovePosition(transform.position + new Vector3(Straffe, 0, Move));
+            transform.Translate(Straffe, 0, Move);
+            //Rigid.MovePosition(transform.position + new Vector3(Straffe, 0, Move));
         }
         else
         {

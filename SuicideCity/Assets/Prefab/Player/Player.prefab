@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 4523446606647666}
   - component: {fileID: 95187783581583262}
   - component: {fileID: 114054592435997348}
+  - component: {fileID: 54379936170977472}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1034,7 +1035,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1705461158981860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.988224, y: 10.001221, z: 92.33255}
+  m_LocalPosition: {x: -13.458825, y: 5.0608425, z: 5.571094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4113748820376040}
@@ -1360,6 +1361,21 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!54 &54379936170977472
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705461158981860}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!81 &81896733129598410
 AudioListener:
   m_ObjectHideFlags: 1
