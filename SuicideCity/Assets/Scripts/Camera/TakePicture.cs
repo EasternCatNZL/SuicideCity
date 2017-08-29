@@ -296,7 +296,14 @@ public class TakePicture : MonoBehaviour {
     //Set up the photo's description
     private void SetDescriptionOnPhoto(PhotoBehaviour _Photo)
     {
-        _Photo.description = descriptionManager.GetDescription (_Photo.mainFocusInterestObject.GetComponent<InterestBehaviour>());
+        if (_Photo.mainFocusInterestObject)
+        {
+            _Photo.description = descriptionManager.GetDescription(_Photo.mainFocusInterestObject.GetComponent<InterestBehaviour>());
+        }
+        else
+        {
+            _Photo.description = descriptionManager.GetNoInterestDescription();
+        }
     }
 
     //create the photo object and run it through the neccesary functions
@@ -308,11 +315,7 @@ public class TakePicture : MonoBehaviour {
         CurrentScreenToPicture(photoClone.GetComponent<PhotoBehaviour>());
         GetAllInterstPointsInPhoto(photoClone.GetComponent<PhotoBehaviour>());
         FindFocusObject(photoClone.GetComponent<PhotoBehaviour>());
-        //check to see if photo has a focus object
-        if (photoClone.GetComponent<PhotoBehaviour>().mainFocusInterestObject)
-        {
-            SetDescriptionOnPhoto(photoClone.GetComponent<PhotoBehaviour>());
-        }
+        SetDescriptionOnPhoto(photoClone.GetComponent<PhotoBehaviour>());
         photobook.AddPhotoToBook(photoClone);
     }
     
