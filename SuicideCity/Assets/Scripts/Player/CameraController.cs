@@ -20,9 +20,12 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (!Lock)
         {
             MouseMovement();
+            if (Input.GetKeyUp(KeyCode.Escape)) { Lock = false; Cursor.lockState = CursorLockMode.Locked; }
+            else if (Input.GetKeyDown(KeyCode.Escape)) { Lock = true; Cursor.lockState = CursorLockMode.None; }
         }
 	}
 

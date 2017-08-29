@@ -20,7 +20,8 @@ public class AI : MonoBehaviour
 
     private bool Stop;
     private float Speed;
-    private float TurningAngle;
+    private float CurrentSpeed;
+    public float TurningAngle;
     private Animator Anim;
     private Rigidbody Rigid;
     private Vector3 Direction;
@@ -31,7 +32,7 @@ public class AI : MonoBehaviour
         Anim = GetComponent<Animator>();
         Rigid = GetComponent<Rigidbody>();
         Speed = Random.Range(MinSpeed, MaxSpeed);
-        TurnRate = Random.Range(1f, 1.5f);
+        CurrentSpeed = Speed;
         DestinationPos = Destination.GetRandomPoint();
     }
 
@@ -75,28 +76,51 @@ public class AI : MonoBehaviour
         Direction.Normalize();
 
         Turning = false;
-        
-        if (Vector3.Dot(transform.right, Direction) < -0.01f)
+        if (Vector3.Angle(transform.forward, Direction) > 0f)
         {
-            if (TurningAngle == 0) TurningAngle = Vector3.Angle(transform.forward, Direction);
-            Turning = true;
-            Dot = Vector3.Dot(transform.right, Direction);
-            transform.Rotate(0.0f, (-TurningAngle) * Time.deltaTime, 0.0f);
-            Angle = (-Vector3.Angle(transform.forward, Direction) * TurnRate);
-        }
-        else if (Vector3.Dot(transform.right, Direction) > 0.01f)
-        {
-            if (TurningAngle == 0) TurningAngle = Vector3.Angle(transform.forward, Direction);
-            Turning = true;
-            Dot = Vector3.Dot(transform.right, Direction);
-            transform.Rotate(0.0f, TurningAngle * Time.deltaTime, 0.0f);
-            Angle = (-Vector3.Angle(transform.forward, Direction) * TurnRate);
+            CurrentSpeed = Speed * 0.8f;
+            if (Vector3.Dot(transform.right, Direction) < -0.01f)
+            {
+                Turning = true;
+                Dot = Vector3.Dot(transform.right, Direction);
+                Angle = (-Vector3.Angle(transform.forward, Direction) * TurnRate);
+
+                if (-TurnRate < -Vector3.Angle(transform.forward, Direction))
+                {
+                    transform.Rotate(0.0f, -Vector3.Angle(transform.forward, Direction) * Time.deltaTime, 0.0f);
+                }
+                else
+                {
+                    transform.Rotate(0.0f, -TurnRate * Time.deltaTime, 0.0f);
+                }
+
+            }
+            else if (Vector3.Dot(transform.right, Direction) > 0.01f)
+            {
+                Turning = true;
+                Dot = Vector3.Dot(transform.right, Direction);
+                Angle = (Vector3.Angle(transform.forward, Direction) * TurnRate);
+
+                if (TurnRate > Vector3.Angle(transform.forward, Direction))
+                {
+                    transform.Rotate(0.0f, Vector3.Angle(transform.forward, Direction) * Time.deltaTime, 0.0f);
+                }
+                else
+                {
+                    transform.Rotate(0.0f, TurnRate * Time.deltaTime, 0.0f);
+                }
+
+            }
+            else
+            {
+                transform.Rotate(0.0f, Vector3.Angle(transform.forward, Direction) * Time.deltaTime, 0.0f);
+            }
         }
         else
         {
-            TurningAngle = 0f;
+            CurrentSpeed = Speed;
         }
-        Rigid.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
+        Rigid.MovePosition(transform.position + transform.forward * CurrentSpeed * Time.deltaTime);
     }
 
     private void OnDrawGizmos()
@@ -104,6 +128,6 @@ public class AI : MonoBehaviour
         Gizmos.color = Color.cyan;       
         Gizmos.DrawLine(transform.position, transform.position + Direction);
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward);
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward + new Vector3(0f, 0.1f, 0f));
     }
 }

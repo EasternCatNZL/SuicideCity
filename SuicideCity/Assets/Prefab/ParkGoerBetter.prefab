@@ -1335,11 +1335,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdad57f508937145a53944dc466a3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Turning: 0
+  TurnRate: 45
+  Dot: 0
+  Angle: 0
   MinSpeed: 1
   MaxSpeed: 1.5
   Destination: {fileID: 0}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
+  TurningAngle: 0
 --- !u!136 &136419966101566392
 CapsuleCollider:
   m_ObjectHideFlags: 1

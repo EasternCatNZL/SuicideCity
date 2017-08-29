@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour {
     private float Straffe;
     private Animator Anim;
     static private bool Lock = false;
+    private Rigidbody Rigid;
     
 
 	// Use this for initialization
 	void Start () {
+        Rigid = GetComponent<Rigidbody>();
         Anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -36,7 +38,8 @@ public class PlayerController : MonoBehaviour {
             Move *= Time.deltaTime;
             Straffe *= Time.deltaTime;
 
-            transform.Translate(Straffe, 0, Move);
+            //transform.Translate(Straffe, 0, Move);
+            Rigid.MovePosition(transform.position + new Vector3(Straffe, 0, Move));
         }
         else
         {
