@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using UnityEngine.UI;
 
 public class TakePicture : MonoBehaviour {
 
@@ -12,6 +12,11 @@ public class TakePicture : MonoBehaviour {
     private Vector3 halfExtentRange;
     [Tooltip("Box position")]
     public Vector3 boxPos;
+    [Tooltip("Lens image")]
+    public Image lensImage;
+    [Tooltip("Lens movement time")]
+    [Range(0.1f, 0.5f)]
+    public float lensMovementTime = 0.2f;
     [Tooltip("Focus change")]
     [Range(1.0f, 2.0f)]
     public float focusChange = 1.5f;
@@ -25,11 +30,11 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("Camera zoom min")]
     public float cameraZoomMin = -10.0f;
     [Tooltip("Camera zoom max")]
-    public float cameraZoomMax = 10.0f;
-
-    //[Header("Camera Arm Object")]
-    //[Tooltip("Camera arm object ref")]
-    //public GameObject cameraArmPos;
+    public float cameraZoomMax = 0;
+    [Tooltip("Lens movement")]
+    public float lensMovement = 90.0f;
+    //starting fov
+    private float startFOV = 60.0f;
 
     [Header("Input Axis")]
     [Tooltip("Name of mousewheel axis")]
@@ -70,25 +75,56 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("Description manager script ref")]
     public DescriptionManager descriptionManager;
 
+
     public KeyCode photoCaptureKeyCode;
+
+    //control bools
+    public bool isCameraOn = false;
 
     // Use this for initialization
     void Start() {
         mainCamera = Camera.main;
         halfExtentRange = extentRange / 2;
-
+        startFOV = mainCamera.fieldOfView;
+        DOTween.Init();
         //GetFrustumPlanes();
         //CreateFrustumPlanes();
     }
 
     // Update is called once per frame
     void Update() {
-        CameraZoom();
-
-        //debug
+        if (isCameraOn)
+        {
+            CameraZoom();
+            if (Input.GetMouseButtonDown(0))
+            {
+                RunCameraFuncs();
+            }
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            RunCameraFuncs();
+            TurnCameraOnOff();
+        }
+    }
+
+    //move camera screen into view
+    private void TurnCameraOnOff()
+    {
+        if (isCameraOn)
+        {
+            //set camera on to false
+            isCameraOn = false;
+            //move lens
+            lensImage.rectTransform.DOLocalRotate(new Vector3(-lensMovement, 0, 0), lensMovementTime, RotateMode.Fast);
+            //set fov back to preset
+            mainCamera.fieldOfView = startFOV;
+            //set zoom back to 0
+            cameraZoom = 0.0f;
+        }
+        else if (!isCameraOn)
+        {
+            isCameraOn = true;
+            lensImage.rectTransform.DOLocalRotate(new Vector3(0, 0, 0), lensMovementTime, RotateMode.Fast);
         }
     }
 
@@ -102,10 +138,10 @@ public class TakePicture : MonoBehaviour {
             {
                 //change the camera zoom
                 cameraZoom -= zoomIntervals;
-                //alter the position of the interest box to match zoom
-                boxPos.z += zoomIntervals;
+                //alter the fov
+                mainCamera.fieldOfView -= zoomIntervals;
                 //move the camera
-                MoveCamera(cameraZoom);
+                //MoveCamera(cameraZoom);
             }
         }
         else if (Input.GetAxis(mouseWheelAxisName) < 0.0f)
@@ -114,10 +150,10 @@ public class TakePicture : MonoBehaviour {
             {
                 //change the camera zoom
                 cameraZoom += zoomIntervals;
-                //alter the position of the interest box to match zoom
-                boxPos.z -= zoomIntervals;
+                //alter the fov
+                mainCamera.fieldOfView += zoomIntervals;
                 //move the camera
-                MoveCamera(cameraZoom);
+                //MoveCamera(cameraZoom);
             }
         }
     }

@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 136540357964057196}
   - component: {fileID: 54994461933662580}
   - component: {fileID: 114620098409368856}
+  - component: {fileID: 114462383051133126}
   m_Layer: 0
   m_Name: CameraMan
   m_TagString: Untagged
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479604763287186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1, z: -13.34}
+  m_LocalPosition: {x: 50.3, y: 12.56, z: 46.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4963714413277884}
@@ -170,6 +171,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1035586471300108}
   m_Enabled: 1
+--- !u!114 &114462383051133126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479604763287186}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2493d0766f68a6e4c80c615afc2c5685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 5
 --- !u!114 &114598521904243954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +195,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photoList: []
+  photobookMenuObject: {fileID: 0}
+  displayImage: {fileID: 0}
+  selectedImage: {fileID: 114077621724867304, guid: 260da2dbb58cc064c989590eca6ddd28,
+    type: 2}
+  leftImage: {fileID: 114785512708205874, guid: d9eea8b9ab3c27e4c9af5e9b8bf0aadf,
+    type: 2}
+  rightImage: {fileID: 114930246632088644, guid: 84073a5f4e823124aa68345d21438ef3,
+    type: 2}
+  text: {fileID: 0}
+  leftButton: {fileID: 0}
+  rightButton: {fileID: 0}
+  noPhotosImage: {fileID: 21300000, guid: 60671a7b1b5ed674caf6d7f61a2612c1, type: 3}
+  transitionTime: 0.5
 --- !u!114 &114620098409368856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,11 +221,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extentRange: {x: 25, y: 25, z: 25}
   boxPos: {x: 25, y: 25, z: 25}
+  lensImage: {fileID: 0}
+  lensMovementTime: 0.2
   focusChange: 1.5
   cameraZoom: 0
   zoomIntervals: 1
-  cameraZoomMin: -10
+  cameraZoomMin: 0
   cameraZoomMax: 10
+  lensMovement: 90
   mouseWheelAxisName: Mouse ScrollWheel
   interestObjectTag: Interest
   resolutionWidth: 1980
@@ -208,6 +237,8 @@ MonoBehaviour:
     type: 2}
   objectsInterestList: []
   photobook: {fileID: 114598521904243954}
+  descriptionManager: {fileID: 0}
+  photoCaptureKeyCode: 0
 --- !u!124 &124573085532800460
 Behaviour:
   m_ObjectHideFlags: 1
