@@ -139,5 +139,10 @@ public class PathWaypoint : MonoBehaviour
             
             Gizmos.DrawLine(transform.position + Vector3.Cross(dir, transform.up) / 2, Waypoint[i].transform.position);                     
         }
+        if(PointOfInterest)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, PointOfInterest.transform.position);
+        }
     }
 }

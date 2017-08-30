@@ -140,7 +140,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 2012476930}
   - {fileID: 1002417995}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 919686398}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &2674431
@@ -969,7 +969,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 1489421514}
   - {fileID: 474965588}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 2113040909}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &191992622 stripped
@@ -2681,7 +2681,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 186995602}
   - {fileID: 482672955}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 365783569}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &474965589
@@ -2728,7 +2728,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 474965588}
   - {fileID: 701134082}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 850300130}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &482672956
@@ -2822,7 +2822,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 872621285}
   - {fileID: 1514952624}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 1853485963}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &483737072
@@ -3412,7 +3412,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 940503052}
   - {fileID: 1634186858}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 1405238742}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &570631665
@@ -4706,7 +4706,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 630519263}
   - {fileID: 1051632808}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 2035163160}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &875525050
@@ -4924,7 +4924,7 @@ MonoBehaviour:
   - {fileID: 1051632808}
   - {fileID: 1476704562}
   - {fileID: 1489421514}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 503077185}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &932264850
@@ -5041,7 +5041,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 570631664}
   - {fileID: 301783578}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 1064883629}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &940503053
@@ -5670,7 +5670,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 875525049}
   - {fileID: 932264849}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 1647486432}
   Mapped: 0
   DebugBoolean: 0
 --- !u!1001 &1055085553
@@ -5988,7 +5988,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 198989271}
   - {fileID: 826796569}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 1383342847}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &1075184102
@@ -7016,7 +7016,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1250898469}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 226128c22f8ac1a4ca8f8461cc441872, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.32
@@ -7375,7 +7375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b38593e4d6a40b841911f4bd59ddf354, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.377659
+      value: 23.42
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b38593e4d6a40b841911f4bd59ddf354, type: 3}
       propertyPath: m_LocalRotation.x
@@ -11572,7 +11572,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 932264849}
   - {fileID: 1002417995}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 935226786}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &1485584454 stripped
@@ -11883,7 +11883,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 483737071}
   - {fileID: 1989750582}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 391481713}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &1514952625
@@ -12991,7 +12991,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 570631664}
   - {fileID: 1489421514}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 207989489}
   Mapped: 0
   DebugBoolean: 0
 --- !u!1 &1635630107 stripped
@@ -14831,7 +14831,7 @@ MonoBehaviour:
   Radius: 2.93
   Waypoint:
   - {fileID: 826796569}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 245663604}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &1954451104
@@ -15471,7 +15471,7 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 2040322165}
   - {fileID: 2674430}
-  PointOfInterest: {fileID: 0}
+  PointOfInterest: {fileID: 398613239}
   Mapped: 0
   DebugBoolean: 0
 --- !u!4 &2012476931

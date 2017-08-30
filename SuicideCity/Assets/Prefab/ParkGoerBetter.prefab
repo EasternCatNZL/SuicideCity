@@ -1335,12 +1335,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdad57f508937145a53944dc466a3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Turning: 0
+  TurningLeft: 0
+  TurningRight: 0
+  TurnSlow: 0.8
   TurnRate: 45
   Dot: 0
   Angle: 0
-  MinSpeed: 1
-  MaxSpeed: 1.5
+  MinSpeed: 1.2
+  MaxSpeed: 1.6
   Destination: {fileID: 0}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -1351,7 +1353,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1575181434187486}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 226128c22f8ac1a4ca8f8461cc441872, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.37
