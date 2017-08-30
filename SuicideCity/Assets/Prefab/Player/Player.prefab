@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 95187783581583262}
   - component: {fileID: 114054592435997348}
   - component: {fileID: 54379936170977472}
+  - component: {fileID: 136261485100616192}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1035,7 +1036,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1705461158981860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.458825, y: 5.0608425, z: 5.571094}
+  m_LocalPosition: {x: -13.458825, y: 5.125, z: 5.571094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4113748820376040}
@@ -1439,6 +1440,19 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708524027281712}
   m_Enabled: 1
+--- !u!136 &136261485100616192
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705461158981860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137964311109500682
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
