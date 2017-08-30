@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneFadeInOut : MonoBehaviour {
     
-    public bool start = false;
-    public float fadeDamp = 0.5f;
-    public string fadeScene;
-    public float alpha = 0.0f;
-    public Color fadeColor;
+    public bool Start = false;
+    public float FadeSpeed = 0.5f;
+    public string FadeScene;
+    public float Alpha = 0.0f;
+    public Color FadeColor;
     public bool isFadeIn = false;
 
     // Use this for initialization
-    void Start () {
+    void start () {
         
 	}
 	
@@ -35,34 +35,34 @@ public class SceneFadeInOut : MonoBehaviour {
 
     void OnGUI()
     {
-        if (!start)
+        if (!Start)
         {
             return;
         }
 
-        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, alpha);
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, Alpha);
 
         Texture2D TempTexture;
         TempTexture = new Texture2D(1, 1);
-        TempTexture.SetPixel(0, 0, fadeColor);
+        TempTexture.SetPixel(0, 0, FadeColor);
         TempTexture.Apply();
 
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), TempTexture);
 
         if (isFadeIn)
         {
-            alpha = Mathf.Lerp(alpha, -0.1f, fadeDamp * Time.deltaTime);
+            Alpha = Mathf.Lerp(Alpha, -0.1f, FadeSpeed * Time.deltaTime);
         }            
         else
         {
-            alpha = Mathf.Lerp(alpha, 1.1f, fadeDamp * Time.deltaTime);
+            Alpha = Mathf.Lerp(Alpha, 1.1f, FadeSpeed * Time.deltaTime);
         }            
-        if (alpha >= 1 && !isFadeIn)
+        if (Alpha >= 1 && !isFadeIn)
         {
-            SceneManager.LoadScene(fadeScene);
+            SceneManager.LoadScene(FadeScene);
             DontDestroyOnLoad(gameObject);
         }
-        else if (alpha <= 0 && isFadeIn)
+        else if (Alpha <= 0 && isFadeIn)
         {
             Destroy(gameObject);
         }

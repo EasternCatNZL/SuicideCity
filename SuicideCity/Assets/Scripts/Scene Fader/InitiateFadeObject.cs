@@ -14,15 +14,15 @@ public class InitiateFadeObject : MonoBehaviour {
 		
 	}
 
-    public static void Fade(string scene, Color col, float damp)
+    public static void Fade(string scene, Color colour, float FadeSpeed)
     {
         GameObject Fader = new GameObject();
         //init.name = "SceneFader";
         Fader.AddComponent<SceneFadeInOut>();
         SceneFadeInOut SceneFader = Fader.GetComponent<SceneFadeInOut>();
-        SceneFader.fadeDamp = damp;
-        SceneFader.fadeScene = scene;
-        SceneFader.fadeColor = col;
-        SceneFader.start = true;
+        SceneFader.FadeSpeed = FadeSpeed;
+        SceneFader.FadeScene = scene;
+        SceneFader.FadeColor = colour;
+        SceneFader.Start = true;
     }
 }
