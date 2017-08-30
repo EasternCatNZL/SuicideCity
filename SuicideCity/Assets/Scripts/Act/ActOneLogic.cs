@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ActOneLogic : MonoBehaviour {
 
@@ -14,11 +15,20 @@ public class ActOneLogic : MonoBehaviour {
     [Tooltip("Tag for player")]
     public string playerString = "Player";
 
+    [Header("Act control")]
+    [Tooltip("Jump force by actor")]
+    public float actorJumpForce = 4.0f;
+    [Tooltip("Forward jump distance by actor")]
+    public float actorJumpDistance = 5.0f;
+    [Tooltip("Tween jump time (Arc of jump)")]
+    public float arcJumpTime = 3.0f;
+
     private bool isStartAct = false;
 
 	// Use this for initialization
 	void Start () {
-		
+        victimActor.GetComponent<ActOneVictimLogic>().actOneLogic = this;
+        StartCoroutine(ActCoroutine());
 	}
 	
 	// Update is called once per frame
@@ -31,7 +41,14 @@ public class ActOneLogic : MonoBehaviour {
         //wait for flag to start
         yield return isStartAct;
 
+        //change victim and scene to in act
+        victimActor.GetComponent<InterestBehaviour>().progress = InterestBehaviour.ActProgress.InAct;
+        sceneObject.GetComponent<InterestBehaviour>().progress = InterestBehaviour.ActProgress.InAct;
 
+        //get end of jump arc
+        Vector3 endOfArcPos = victimActor.transform.position + victimActor.transform.forward * actorJumpDistance;
+        //have victim jump
+        victimActor.transform.DOJump(endOfArcPos, actorJumpForce, 1, arcJumpTime);
     }
 
     //start coroutine using trigger
