@@ -136,13 +136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1225276451}
   - {fileID: 1418596804}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &14537686
 Transform:
   m_ObjectHideFlags: 0
@@ -249,13 +249,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 92897982}
   - {fileID: 357854647}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &65805372
 Transform:
   m_ObjectHideFlags: 0
@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 730991793}
   - {fileID: 1418596804}
@@ -303,7 +304,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &88423511
 Transform:
   m_ObjectHideFlags: 0
@@ -344,13 +344,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 485039578}
   - {fileID: 65805371}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &92897983
 Transform:
   m_ObjectHideFlags: 0
@@ -507,13 +507,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 964761563}
   - {fileID: 849194958}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &134839136
 Transform:
   m_ObjectHideFlags: 0
@@ -554,13 +554,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 2041894562}
   - {fileID: 1115202219}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &154826564
 Transform:
   m_ObjectHideFlags: 0
@@ -601,13 +601,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 230747462}
   - {fileID: 1442102929}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &170550106
 Transform:
   m_ObjectHideFlags: 0
@@ -781,6 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 2131222451}
   - {fileID: 2041894562}
@@ -788,7 +789,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &230747463
 Transform:
   m_ObjectHideFlags: 0
@@ -829,13 +829,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1058022153}
   - {fileID: 1150285438}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &236899032
 Transform:
   m_ObjectHideFlags: 0
@@ -880,6 +880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 357854647}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -1053,13 +1055,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1803895233}
   - {fileID: 730991793}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &347420261
 Transform:
   m_ObjectHideFlags: 0
@@ -1229,13 +1231,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 65805371}
   - {fileID: 500463896}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!1001 &361835092
 Prefab:
   m_ObjectHideFlags: 0
@@ -1313,13 +1315,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 500463896}
   - {fileID: 1418596804}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &364232369
 Transform:
   m_ObjectHideFlags: 0
@@ -1480,13 +1482,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1541703015}
   - {fileID: 1706692981}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &447015018
 Transform:
   m_ObjectHideFlags: 0
@@ -1597,6 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 2131222451}
   - {fileID: 92897982}
@@ -1604,7 +1607,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &485039579
 Transform:
   m_ObjectHideFlags: 0
@@ -1649,6 +1651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 357854647}
   - {fileID: 364232368}
@@ -1656,7 +1659,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &500463897
 Transform:
   m_ObjectHideFlags: 0
@@ -1830,13 +1832,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1535930735}
   - {fileID: 2080402496}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &599541687
 Transform:
   m_ObjectHideFlags: 0
@@ -1881,6 +1883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 485039578}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -2192,13 +2196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 347420260}
   - {fileID: 88423510}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &730991794
 Transform:
   m_ObjectHideFlags: 0
@@ -2255,6 +2259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 92897982}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -2378,13 +2384,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1535930735}
   - {fileID: 134839135}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &849194959
 Transform:
   m_ObjectHideFlags: 0
@@ -2537,13 +2543,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 485039578}
   - {fileID: 1675357317}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &934388731
 Transform:
   m_ObjectHideFlags: 0
@@ -2584,13 +2590,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1675357317}
   - {fileID: 134839135}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &964761564
 Transform:
   m_ObjectHideFlags: 0
@@ -2821,13 +2827,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 2080402496}
   - {fileID: 236899031}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1058022154
 Transform:
   m_ObjectHideFlags: 0
@@ -2997,13 +3003,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 88423510}
   - {fileID: 1541703015}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!1001 &1110376125
 Prefab:
   m_ObjectHideFlags: 0
@@ -3143,13 +3149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 154826563}
   - {fileID: 1861458213}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1115202220
 Transform:
   m_ObjectHideFlags: 0
@@ -3269,13 +3275,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 236899031}
   - {fileID: 1861458213}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!1001 &1162347492
 Prefab:
   m_ObjectHideFlags: 0
@@ -3535,13 +3541,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 2131222451}
   - {fileID: 14537685}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &1225276452
 Transform:
   m_ObjectHideFlags: 0
@@ -4059,6 +4065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 14537685}
   - {fileID: 364232368}
@@ -4066,7 +4073,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &1418596805
 Transform:
   m_ObjectHideFlags: 0
@@ -4111,13 +4117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 170550105}
   - {fileID: 1861458213}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1442102930
 Transform:
   m_ObjectHideFlags: 0
@@ -4162,6 +4168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 364232368}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -4277,13 +4285,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 2041894562}
   - {fileID: 1803895233}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1449067725
 Transform:
   m_ObjectHideFlags: 0
@@ -4450,6 +4458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 500463896}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -4565,6 +4575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1706692981}
   - {fileID: 500463896}
@@ -4573,7 +4584,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &1535930736
 Transform:
   m_ObjectHideFlags: 0
@@ -4614,13 +4624,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 447015017}
   - {fileID: 1110336232}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1541703016
 Transform:
   m_ObjectHideFlags: 0
@@ -4665,6 +4675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 2131222451}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -4746,13 +4758,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1543571436}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.16809532, z: -0, w: 0.98577076}
   m_LocalPosition: {x: 52.92, y: 11.05, z: 36.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -19.354, z: 0}
 --- !u!1 &1555147113
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +4796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 14537685}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -5007,6 +5021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 1418596804}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -5420,12 +5436,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1803895233}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1675335799
 Transform:
   m_ObjectHideFlags: 0
@@ -5466,13 +5482,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 934388730}
   - {fileID: 964761563}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 
 --- !u!4 &1675357318
 Transform:
   m_ObjectHideFlags: 0
@@ -5513,13 +5529,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 447015017}
   - {fileID: 1535930735}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1706692982
 Transform:
   m_ObjectHideFlags: 0
@@ -5692,13 +5708,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1449067724}
   - {fileID: 1675335798}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1803895234
 Transform:
   m_ObjectHideFlags: 0
@@ -5739,6 +5755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1150285438}
   - {fileID: 1115202219}
@@ -5746,7 +5763,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &1861458214
 Transform:
   m_ObjectHideFlags: 0
@@ -5985,6 +6001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 1225276451}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
@@ -6121,6 +6139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 230747462}
   - {fileID: 1449067724}
@@ -6128,7 +6147,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &2056661998 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: dde45bd93f487b041b4f533cf2db1ea0, type: 3}
@@ -6164,13 +6182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 599541686}
   - {fileID: 1058022153}
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &2080402497
 Transform:
   m_ObjectHideFlags: 0
@@ -6219,6 +6237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3609965d0218f8d48a0f982a5d8c1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 1
   Waypoint:
   - {fileID: 1225276451}
   - {fileID: 485039578}
@@ -6226,7 +6245,6 @@ MonoBehaviour:
   PointOfInterest: {fileID: 0}
   Mapped: 0
   DebugBoolean: 0
-  temp: 0000000000000000
 --- !u!4 &2131222452
 Transform:
   m_ObjectHideFlags: 0
@@ -6271,6 +6289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45971b3c8e0415442a5035fb164d90cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 1
+  MaxSpeed: 1.5
   Destination: {fileID: 65805371}
   PrevDestination: {x: 0, y: 0, z: 0}
   TargetPointOfInterest: {fileID: 0}
