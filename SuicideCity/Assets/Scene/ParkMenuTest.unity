@@ -3873,11 +3873,6 @@ Prefab:
       propertyPath: rightButton
       value: 
       objectReference: {fileID: 1055400480}
-    - target: {fileID: 20598946513260154, guid: aa88bccb6d3945248af033fcc322f375,
-        type: 2}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa88bccb6d3945248af033fcc322f375, type: 2}
   m_IsPrefabParent: 0

@@ -20,6 +20,8 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("Focus change")]
     [Range(1.0f, 2.0f)]
     public float focusChange = 1.5f;
+    [Tooltip("Zoom change duration")]
+    public float zoomChangeDuration = 0.3f;
 
     [Header("Camera Vars")]
     [Tooltip("Camera Zoom")]
@@ -28,9 +30,9 @@ public class TakePicture : MonoBehaviour {
     [Tooltip("The number of intervals between the minimum and maximum zoom")]
     public float zoomIntervals = 1.0f;
     [Tooltip("Camera zoom min")]
-    public float cameraZoomMin = -10.0f;
+    public float cameraZoomMin = 0.0f;
     [Tooltip("Camera zoom max")]
-    public float cameraZoomMax = 0;
+    public float cameraZoomMax = 10.0f;
     [Tooltip("Lens movement")]
     public float lensMovement = 90.0f;
     //starting fov
@@ -79,7 +81,9 @@ public class TakePicture : MonoBehaviour {
     public KeyCode photoCaptureKeyCode;
 
     //control bools
-    public bool isCameraOn = false;
+    private bool isCameraOn = false;
+    //tween control
+    private TweenCallback tweenCallback;
 
     // Use this for initialization
     void Start() {
@@ -137,23 +141,24 @@ public class TakePicture : MonoBehaviour {
             if (cameraZoom > cameraZoomMin)
             {
                 //change the camera zoom
-                cameraZoom -= zoomIntervals;
+                cameraZoom--;
+                //move interest box
+                boxPos.z += zoomIntervals / 2.5f;
                 //alter the fov
-                mainCamera.fieldOfView -= zoomIntervals;
-                //move the camera
-                //MoveCamera(cameraZoom);
+                mainCamera.DOFieldOfView(mainCamera.fieldOfView - zoomIntervals, zoomChangeDuration);
             }
         }
         else if (Input.GetAxis(mouseWheelAxisName) < 0.0f)
         {
+            
             if (cameraZoom < cameraZoomMax)
             {
-                //change the camera zoom
-                cameraZoom += zoomIntervals;
-                //alter the fov
-                mainCamera.fieldOfView += zoomIntervals;
-                //move the camera
-                //MoveCamera(cameraZoom);
+                //increase current zoom
+                cameraZoom++;
+                //move interest box
+                boxPos.z -= zoomIntervals / 2.5f;
+                //change the field of view by interval
+                mainCamera.DOFieldOfView(mainCamera.fieldOfView + zoomIntervals, zoomChangeDuration);
             }
         }
     }

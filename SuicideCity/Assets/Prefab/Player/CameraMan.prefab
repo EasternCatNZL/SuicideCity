@@ -224,10 +224,11 @@ MonoBehaviour:
   lensImage: {fileID: 0}
   lensMovementTime: 0.2
   focusChange: 1.5
+  zoomChangeDuration: 0.05
   cameraZoom: 0
-  zoomIntervals: 1
-  cameraZoomMin: 0
-  cameraZoomMax: 10
+  zoomIntervals: 5
+  cameraZoomMin: -10
+  cameraZoomMax: 0
   lensMovement: 90
   mouseWheelAxisName: Mouse ScrollWheel
   interestObjectTag: Interest
