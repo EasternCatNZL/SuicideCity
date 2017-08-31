@@ -41,13 +41,8 @@ public class PathWaypoint : MonoBehaviour
     {
         if (PointOfInterest == _POI) return null;
         int WaypointIndex = -1;
-        foreach (KeyValuePair<GameObject, int> waypoint in POIs)
-        {
-            print("\n" + waypoint.Key + " - " + waypoint.Value);
-        }
         if (POIs.TryGetValue(_POI, out WaypointIndex))
         {
-            print("Found: " + WaypointIndex);
             return Waypoint[WaypointIndex];
         }
         return null;

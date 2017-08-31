@@ -61,7 +61,6 @@ public class AI : MonoBehaviour
                 }
 
                 Vector3 TempPos = Destination.transform.position;
-                print("find path to " + Schedule[ScheduleIndex].name);
                 Destination = Destination.FindPointOfInterest(Schedule[ScheduleIndex]);
 
                 if (!Destination) Stop = true;
