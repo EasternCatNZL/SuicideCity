@@ -126,23 +126,23 @@ public class PathWaypoint : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawSphere(transform.position, 0.2f);
-        Gizmos.color = Color.red;
-        UnityEditor.Handles.color = Color.cyan;
-        UnityEditor.Handles.Label(transform.position + transform.up, gameObject.name);
-        UnityEditor.Handles.DrawWireDisc(transform.position, transform.up, Radius);
-        for (int i = 0; i < Waypoint.Length; ++i)
-        {
-            Vector3 dir = Waypoint[i].transform.position - transform.position;
-            dir.Normalize();
+        //Gizmos.color = Color.magenta;
+        //Gizmos.DrawSphere(transform.position, 0.2f);
+        //Gizmos.color = Color.red;
+        //UnityEditor.Handles.color = Color.cyan;
+        //UnityEditor.Handles.Label(transform.position + transform.up, gameObject.name);
+        //UnityEditor.Handles.DrawWireDisc(transform.position, transform.up, Radius);
+        //for (int i = 0; i < Waypoint.Length; ++i)
+        //{
+        //    Vector3 dir = Waypoint[i].transform.position - transform.position;
+        //    dir.Normalize();
             
-            Gizmos.DrawLine(transform.position + Vector3.Cross(dir, transform.up) / 2, Waypoint[i].transform.position);                     
-        }
-        if(PointOfInterest)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, PointOfInterest.transform.position);
-        }
+        //    Gizmos.DrawLine(transform.position + Vector3.Cross(dir, transform.up) / 2, Waypoint[i].transform.position);                     
+        //}
+        //if(PointOfInterest)
+        //{
+        //    Gizmos.color = Color.green;
+        //    Gizmos.DrawLine(transform.position, PointOfInterest.transform.position);
+        //}
     }
 }

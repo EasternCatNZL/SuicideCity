@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEditor;
+//using UnityEditor;
 
 public class AI : MonoBehaviour
 {
@@ -159,17 +159,17 @@ public class AI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.cyan;       
-        Gizmos.DrawLine(transform.position, transform.position + Direction);
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward + new Vector3(0f, 0.1f, 0f));
-        Handles.DrawSolidArc(transform.position, transform.up, transform.forward, Angle, 1f);
+        //Gizmos.color = Color.cyan;       
+        //Gizmos.DrawLine(transform.position, transform.position + Direction);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawLine(transform.position, transform.position + transform.forward + new Vector3(0f, 0.1f, 0f));
+        //Handles.DrawSolidArc(transform.position, transform.up, transform.forward, Angle, 1f);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Handles.BeginGUI();
-        Handles.Label(transform.position + transform.up * 3, "Turning Direction:\nLeft: " + TurningLeft + "\nRight: " +TurningRight + "\nSpeed: " + CurrentSpeed);
+        //Handles.BeginGUI();
+        //Handles.Label(transform.position + transform.up * 3, "Turning Direction:\nLeft: " + TurningLeft + "\nRight: " +TurningRight + "\nSpeed: " + CurrentSpeed);
         
     }
 }
