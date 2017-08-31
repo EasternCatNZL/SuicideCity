@@ -23,12 +23,15 @@ public class ActOneLogic : MonoBehaviour {
     [Tooltip("Tween jump time (Arc of jump)")]
     public float arcJumpTime = 3.0f;
 
+    [Header("Animation trigger")]
+    public string flailTrigger = "Flail";
+
     private bool isStartAct = false;
 
 	// Use this for initialization
 	void Start () {
-        victimActor.GetComponent<ActOneVictimLogic>().actOneLogic = this;
-        StartCoroutine(ActCoroutine());
+        //victimActor.GetComponent<ActOneVictimLogic>().actOneLogic = this;
+//StartCoroutine(ActCoroutine());
 	}
 	
 	// Update is called once per frame
@@ -37,9 +40,9 @@ public class ActOneLogic : MonoBehaviour {
 	}
 
     //coroutine that runs after player has entered area
-    private IEnumerator ActCoroutine(){
+    private void ActCoroutine(){
         //wait for flag to start
-        yield return isStartAct;
+        //yield return isStartAct;
 
         //change victim and scene to in act
         victimActor.GetComponent<InterestBehaviour>().progress = InterestBehaviour.ActProgress.InAct;
@@ -49,6 +52,9 @@ public class ActOneLogic : MonoBehaviour {
         Vector3 endOfArcPos = victimActor.transform.position + victimActor.transform.forward * actorJumpDistance;
         //have victim jump
         victimActor.transform.DOJump(endOfArcPos, actorJumpForce, 1, arcJumpTime);
+
+        //fire the trigger on animator for victim
+        victimActor.GetComponent<ActOneVictimLogic>().anim.SetTrigger(flailTrigger);
     }
 
     //start coroutine using trigger
@@ -58,6 +64,7 @@ public class ActOneLogic : MonoBehaviour {
         if (other.CompareTag(playerString))
         {
             isStartAct = true;
+            ActCoroutine();
         }
     }
 }

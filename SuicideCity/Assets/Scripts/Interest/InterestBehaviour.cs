@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class InterestBehaviour : MonoBehaviour {
 
-    [Header("Details of interest")]
-    [Tooltip("Name of this thing")]
-    public string interestName;
+    //[Header("Details of interest")]
+    //[Tooltip("Name of this thing")]
+    //public string interestName;
 
     //enum of interest type
     public enum InterestType
