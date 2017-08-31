@@ -108,8 +108,9 @@ public class PhotobookBehaviour : MonoBehaviour {
     {
         //set photobook to open
         isPhotobookOpen = true;
-        //lock the players movement in place
+        //lock the players movement in place and camera
         PlayerController.LockPlayer();
+        CameraController.LockCamera();
         //Activate the photobook object
         photobookMenuObject.SetActive(true);
         //always look at the first photo first
@@ -137,12 +138,13 @@ public class PhotobookBehaviour : MonoBehaviour {
     }
 
     //unlock the player and close the photobook menu
-    private void ClosePhotobook()
+    public void ClosePhotobook()
     {
         //set photobook open to false
         isPhotobookOpen = false;
-        //unlock the player
+        //unlock the player and camera
         PlayerController.UnlockPlayer();
+        CameraController.UnlockCamera();
         //destroy all the items in the created photolist
         for (int i = 0; i < photoImageList.Count; i++)
         {

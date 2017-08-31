@@ -6,6 +6,9 @@ using UnityEditor;
 
 public class AI : MonoBehaviour
 {
+    public int ScheduleIndex = 0;
+    public GameObject[] Schedule; 
+
     public bool TurningLeft = false;
     public bool TurningRight = false;
     [Range(0, 1f)]
@@ -37,7 +40,7 @@ public class AI : MonoBehaviour
         Rigid = GetComponent<Rigidbody>();
         Speed = Random.Range(MinSpeed, MaxSpeed);
         CurrentSpeed = Speed;
-        DestinationPos = Destination.GetRandomPoint();
+        if(Destination) DestinationPos = Destination.GetRandomPoint();
     }
 
     // Update is called once per frame
@@ -46,13 +49,21 @@ public class AI : MonoBehaviour
         Debug.DrawLine(transform.position, DestinationPos);
         if (Vector3.Magnitude(DestinationPos - transform.position) < Arrived && Destination)
         {
+
             Anim.speed = Speed;
             Anim.SetBool("Walking", true);
-            if (TargetPointOfInterest)
+            if (Schedule.Length != 0)
             {
-                Vector3 TempPos = Destination.transform.position;
+                               
+                if (Destination.PointOfInterest == Schedule[ScheduleIndex])
+                {
+                    AdvanceSchedule();
+                }
 
-                Destination = Destination.FindPointOfInterest(TargetPointOfInterest);
+                Vector3 TempPos = Destination.transform.position;
+                print("find path to " + Schedule[ScheduleIndex].name);
+                Destination = Destination.FindPointOfInterest(Schedule[ScheduleIndex]);
+
                 if (!Destination) Stop = true;
                 else
                 {
@@ -61,6 +72,7 @@ public class AI : MonoBehaviour
                     DestinationPos = Destination.GetRandomPoint();
 
                 }
+                
             }
             else
             {
@@ -130,11 +142,20 @@ public class AI : MonoBehaviour
                 transform.Rotate(0.0f, Angle * Time.deltaTime, 0.0f);
             }
         }
+
+        if(!Stop) Rigid.MovePosition(transform.position + transform.forward * CurrentSpeed * Time.deltaTime);
+    }
+
+    public void AdvanceSchedule()
+    {
+        if (ScheduleIndex == Schedule.Length - 1)
+        {
+            ScheduleIndex = 0;
+        }
         else
         {
-            
+            ScheduleIndex++;
         }
-        Rigid.MovePosition(transform.position + transform.forward * CurrentSpeed * Time.deltaTime);
     }
 
     private void OnDrawGizmos()
