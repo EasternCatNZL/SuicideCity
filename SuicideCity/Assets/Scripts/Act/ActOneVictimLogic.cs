@@ -5,16 +5,19 @@ using UnityEngine;
 public class ActOneVictimLogic : MonoBehaviour {
 
     //ref back to act one
-    [HideInInspector]
+    //[HideInInspector]
     public ActOneLogic actOneLogic;
 
     [Header("Tags")]
     [Tooltip("Floor tag")]
     public string floorTag = "Floor";
 
+    [HideInInspector]
+    public Animator anim; //animator of victim
+
 	// Use this for initialization
 	void Start () {
-		
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +32,8 @@ public class ActOneVictimLogic : MonoBehaviour {
         {
             actOneLogic.victimActor.GetComponent<InterestBehaviour>().progress = InterestBehaviour.ActProgress.AfterAct;
             actOneLogic.sceneObject.GetComponent<InterestBehaviour>().progress = InterestBehaviour.ActProgress.AfterAct;
+            //stop the animation
+            
         }
     }
 }
