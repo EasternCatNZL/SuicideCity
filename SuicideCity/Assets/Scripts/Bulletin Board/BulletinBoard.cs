@@ -59,14 +59,14 @@ public class BulletinBoard : MonoBehaviour {
             {
                 MainCamera.transform.LookAt(InfoSheet);
                 MainCamera.fieldOfView = Mathf.Lerp(MainCamera.fieldOfView,20.0f,1.0f);
-                CameraController.LockCamera();
+                //CameraController.LockCamera();
                 PlayerController.LockPlayer();
                 Hint.enabled = false;
                 InMenu = true;
             }
             else if(InMenu == true && Input.GetKeyDown(KeyCode.F))
             {
-                CameraController.UnlockCamera();
+                //CameraController.UnlockCamera();
                 PlayerController.UnlockPlayer();
                 FadeScene();                
             }
